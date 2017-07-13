@@ -86,15 +86,14 @@ class LearningAgent(Agent):
         # from https://stackoverflow.com/questions/268272/getting-key-with-maximum-value-in-dictionary
         maxQ = max(self.Q[state], key=self.Q[state].get)
 
-        # the below code was something I attempted for duplicates in the maxQ function.  However the results were worse.
-        # action_list = []
+        action_list = []
 
-        # for action in self.Q[state]:
-            # if self.Q[state][action] == self.Q[state][maxQ]:
-                # action_list.append(action)
+        for action in self.Q[state]:
+            if self.Q[state][action] == self.Q[state][maxQ]:
+                action_list.append(action)
             
-        # if len(action_list) > 0:
-            # maxQ = random.choice(action_list)
+        if len(action_list) > 0:
+            maxQ = random.choice(action_list)
 
         return maxQ
 
